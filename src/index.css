@@ -40,11 +40,13 @@ header {
 
 button {
   border: 0;
-  cursor: pointer;
   border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 0.75rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0.25rem 0.5rem;
 }
 
 
@@ -82,4 +84,9 @@ button {
   margin-bottom: 0.5rem;
   width: calc(100% + 2rem);
   margin-left: -1rem;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--white);
 }
