@@ -5,7 +5,7 @@ import {Header} from "./components/core/Header";
 function App() {
   return (
     <>
-      <Header />
+      <Header name="John Deere Training" onButtonClick={(e) => alert('Button Clicked')} />
     </>
   );
 }
