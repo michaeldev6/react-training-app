@@ -2,18 +2,10 @@ import React from 'react';
 
 // illustrating various ways to declare styles in React
 const specialButtonStyle = {
-  width: '1.5rem',
-  height: '1.5rem',
-  borderRadius: '50%',
+  borderRadius: '0.25rem',
   backgroundColor: '#fff'
 };
 
-const insideButtonCircle = {
-  width: '0.5rem',
-  height: '0.5rem',
-  borderRadius: '50%',
-  backgroundColor: '#333'
-};
 
 export function Header(props) {
   return (
@@ -24,7 +16,7 @@ export function Header(props) {
       {props.children}
       <div>
         <button onClick={props.onButtonClick} style={specialButtonStyle}>
-          <div style={insideButtonCircle}> </div>
+          { props.buttonText }
         </button>
       </div>
     </header>
