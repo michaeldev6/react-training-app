@@ -5,7 +5,9 @@ export class UserList extends React.Component {
     super(props);
     this.state = {
       isListLoading: true,
-      users: []
+      users: null,
+      hasError: false,
+      error: null
     }
   }
 
@@ -14,28 +16,44 @@ export class UserList extends React.Component {
   }
 
   async loadUserData() {
-    const users = await this.fetchUserData();
-    // setTimout used to emphasize a delayed API response
-    setTimeout(() => {
+    try {
+      const users = await this.fetchUserData();
+      // setTimout used to emphasize a delayed API response
+      setTimeout(() => {
+        this.setState({
+          isListLoading: false,
+          users
+        });
+      }, 1500);
+    } catch(e) {
       this.setState({
+        hasError: true,
         isListLoading: false,
-        users
+        error: e
       });
-    }, 1500);
+    }
+    
   }
 
   fetchUserData() {
     return fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => {
+        if (!response.ok) {
+          throw new Error('Error response received');
+        }
         return response.json();
       })
       .catch((e) => {
-        throw(Error('There was an error grabbing users'));
+        throw e;
       });
   }
 
   render() {
-    if (!this.state.isListLoading) {
+    if (this.state.hasError && !!this.state.error) {
+      throw this.state.error;
+    } 
+    
+    if (!this.state.isListLoading && !!this.state.users) {
       const users = this.state.users;
       const userList = users.map((user) => {
         return (

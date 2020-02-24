@@ -31,6 +31,10 @@ code {
     monospace;
 }
 
+details summary {
+  cursor: pointer;
+}
+
 header {
   background-color: var(--header-background);
   color: var(--white);

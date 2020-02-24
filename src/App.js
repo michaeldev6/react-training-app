@@ -4,6 +4,7 @@ import {Header} from "./components/core/Header";
 import {Notification, notificationStyles} from "./components/core/Notification";
 import {TimeDisplay} from "./components/common/TimeDisplay";
 import {UserList} from "./components/UserList";
+import { ListErrorBoundary } from './components/common/ListErrorBoundary';
 
 // Just sample component to display how it can be passed in through props
 function ExampleNotificationHeader() {
@@ -59,7 +60,9 @@ class App extends React.Component {
               <p>More Custom Content</p>
             </Notification>
           }
-          <UserList />
+          <ListErrorBoundary>
+            <UserList />
+          </ListErrorBoundary>
         </div>
       </>
     );
