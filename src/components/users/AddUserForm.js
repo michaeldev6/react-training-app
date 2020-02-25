@@ -1,4 +1,5 @@
 import React from 'react';
+import {Notification, notificationStyles} from '../core/Notification';
 
 const validEmailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -109,6 +110,15 @@ export class AddUserForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit} onReset={this.resetForm} className="add-user">
+                {
+                    (this.state.nameHasError || this.state.emailHasError) &&
+                    <div style={{marginBottom: '0.5rem'}}>
+                        <Notification notificationStyle={notificationStyles.error}>
+                            {this.state.nameHasError && <p>A name must be entered</p>}
+                            {this.state.emailHasError && <p>A valid email must be entered</p>}
+                        </Notification>
+                    </div>
+                }
                 <div className={'field-group ' + (this.state.formSubmitted && this.state.nameHasError ? ' error' : '')}>
                     <label>Name*: </label>
                     <input type="text" onChange={this.handleNameChange} value={this.state.name} />
