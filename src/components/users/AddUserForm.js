@@ -1,14 +1,19 @@
 import React from 'react';
 
+const validEmailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
 export class AddUserForm extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             name: '',
+            nameHasError: false,
             email: '',
+            emailHasError: false,
             phone: '',
-            website: ''
+            website: '',
+            formSubmitted: false
         };
         
         this.handleNameChange = this.handleNameChange.bind(this);
@@ -54,12 +59,14 @@ export class AddUserForm extends React.Component {
     }
 
     resetForm() {
-        console.log('Reseting form');
         this.setState({
             name: '',
+            nameHasError: false,
             email: '',
+            emailHasError: false,
             phone: '',
-            website: ''
+            website: '',
+            formSubmitted: false
         });
     }
 
