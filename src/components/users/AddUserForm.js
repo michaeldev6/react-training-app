@@ -26,12 +26,29 @@ export class AddUserForm extends React.Component {
 
     handleNameChange(e) {
         const name = e.target.value;
-        this.setState({name});
+        if (this.state.formSubmitted) {
+            const nameHasError = !this.isNameValid(name);
+            this.setState({
+                name,
+                nameHasError
+            });
+        } else {
+            this.setState({name});
+        }
+        
     }
 
     handleEmailChange(e) {
         const email = e.target.value;
-        this.setState({email});
+        if (this.state.formSubmitted) {
+            const emailHasError = !this.isEmailValid(email);
+            this.setState({
+                email,
+                emailHasError
+            });
+        } else {
+            this.setState({email});
+        }
     }
 
     handlePhoneChange(e) {
@@ -92,11 +109,11 @@ export class AddUserForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit} onReset={this.resetForm} className="add-user">
-                <div className="field-group">
+                <div className={'field-group ' + (this.state.formSubmitted && this.state.nameHasError ? ' error' : '')}>
                     <label>Name*: </label>
                     <input type="text" onChange={this.handleNameChange} value={this.state.name} />
                 </div>
-                <div className="field-group">
+                <div className={'field-group ' + (this.state.formSubmitted && this.state.emailHasError ? ' error' : '')}>
                     <label>Email*: </label>
                     <input type="text" onChange={this.handleEmailChange} value={this.state.email} />
                 </div>
