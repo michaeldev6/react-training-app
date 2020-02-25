@@ -15,14 +15,15 @@ const insideButtonCircle = {
   backgroundColor: '#333'
 };
 
-export function Header() {
+export function Header(props) {
   return (
     <header className="flex row space-between-center">
       <div style={{fontSize: '1.5rem', fontWeight: '600'}}>
-        John Deere Training
+        {props.name}
       </div>
+      {props.children}
       <div>
-        <button style={specialButtonStyle}>
+        <button onClick={props.onButtonClick} style={specialButtonStyle}>
           <div style={insideButtonCircle}> </div>
         </button>
       </div>
