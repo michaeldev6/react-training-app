@@ -2,7 +2,10 @@
   --animation-timer: 200ms;
   --aquent-orange: #f8971d;
   --background-color: #ddd;
+  --border-radius: 0.25rem;
   --black: #333;
+  --grey: #888;
+  --light-grey: #ccc;
   --header-background: #666;
   --white: #fff;
   --primary-color: #367c2b;
@@ -38,7 +41,7 @@ header {
 button {
   border: 0;
   cursor: pointer;
-  border-radius: 0.25rem;
+  border-radius: var(--border-radius);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,4 +62,24 @@ button {
 .space-between-center {
   justify-content: space-between;
   align-items: center;
+}
+
+.notification {
+  background-color: var(--light-grey);
+  border: 0.0625rem solid var(--grey);
+  border-radius: var(--border-radius);
+  color: var(--black);
+  font-size: 0.75rem;
+  max-width: 31.25rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+.notification .notification-header {
+  border-bottom: 0.0625rem solid rgba(0,0,0,0.5);
+  font-weight: 600;
+  padding: 0 1rem 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  width: calc(100% + 2rem);
+  margin-left: -1rem;
 }
