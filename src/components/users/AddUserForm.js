@@ -58,6 +58,14 @@ export class AddUserForm extends React.Component {
         };
     }
 
+    isEmailValid(email) {
+        return email.length > 0 && validEmailRegex.test(email);
+    }
+
+    isNameValid(name) {
+        return name.length > 0;
+    }
+
     resetForm() {
         this.setState({
             name: '',
@@ -74,11 +82,11 @@ export class AddUserForm extends React.Component {
         return (
             <form onSubmit={this.handleSubmit} onReset={this.resetForm} className="add-user">
                 <div className="field-group">
-                    <label>Name: </label>
+                    <label>Name*: </label>
                     <input type="text" onChange={this.handleNameChange} value={this.state.name} />
                 </div>
                 <div className="field-group">
-                    <label>Email: </label>
+                    <label>Email*: </label>
                     <input type="text" onChange={this.handleEmailChange} value={this.state.email} />
                 </div>
                 <div className="field-group">
