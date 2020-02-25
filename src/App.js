@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import {Header} from "./components/core/Header";
 import {Notification, notificationStyles} from "./components/core/Notification";
+import {TimeDisplay} from "./components/common/TimeDisplay";
 
 // Just sample component to display how it can be passed in through props
 function ExampleNotificationHeader() {
@@ -16,7 +17,8 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      showNotification: true
+      showNotification: true,
+      showTime: true
     };
 
     this.toggleNotification = this.toggleNotification.bind(this);
@@ -27,10 +29,21 @@ class App extends React.Component {
     this.setState({showNotification});
   }
 
+  toggleTime() {
+    const showTime = !this.state.showTime;
+    this.setState({showTime});
+  }
+
   render() {
     return (
       <>
-        <Header name="John Deere Training" onButtonClick={(e) => alert('Button Clicked')} />
+        <Header
+          name="John Deere Training"
+          onButtonClick={(e) => this.toggleTime()}
+          buttonText={this.state.showTime ? 'Hide Time' : 'Show Time'}
+        >
+          { this.state.showTime && <TimeDisplay /> }
+        </Header>
         <button className="btn-primary" onClick={this.toggleNotification}>
           {this.state.showNotification ? 'Hide Notification' : 'Show Notification'}
         </button>
