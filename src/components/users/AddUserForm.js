@@ -72,7 +72,7 @@ export class AddUserForm extends React.Component {
                 name: this.state.name,
                 email: this.state.email,
                 phone: this.state.phone,
-                website: 'https://' + this.state.website,
+                website: !!this.state.website ? 'https://' + this.state.website : '',
             };
             if (!!this.props.whenFormSubmitted && typeof this.props.whenFormSubmitted === 'function') {
                 this.props.whenFormSubmitted(user);

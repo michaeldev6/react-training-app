@@ -13,10 +13,21 @@ export function UserList(props) {
         <div key={user.id} className="user">
           {user.name}<br />
           <span>Email: {user.email}</span><br />
-          <span>Phone: {user.phone}</span><br />
-          <span>
-            Website: <a href={`https://${user.website}`} target="_blank" rel="noopener noreferrer">{user.website}</a>
-          </span><br />
+          {
+            !!user.phone && 
+            <>
+              <span>Phone: {user.phone}</span><br />
+            </> 
+          }
+          {
+            !!user.website &&
+            <>
+              <span>
+                Website: <a href={`https://${user.website}`} target="_blank" rel="noopener noreferrer">{user.website}</a>
+              </span><br />
+            </>
+          }
+          
         </div>
       );
     });
