@@ -46,16 +46,27 @@ export class AddUserForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const user = {
-            name: this.state.name,
-            email: this.state.email,
-            phone: this.state.phone,
-            website: 'https://' + this.state.website,
-        };
-        if (!!this.props.whenFormSubmitted && typeof this.props.whenFormSubmitted === 'function') {
-            this.props.whenFormSubmitted(user);
-            this.resetForm();
-        };
+        const validName = this.isNameValid(this.state.name);
+        const validEmail = this.isEmailValid(this.state.email);
+
+        if (validName && validEmail) {
+            const user = {
+                name: this.state.name,
+                email: this.state.email,
+                phone: this.state.phone,
+                website: 'https://' + this.state.website,
+            };
+            if (!!this.props.whenFormSubmitted && typeof this.props.whenFormSubmitted === 'function') {
+                this.props.whenFormSubmitted(user);
+                this.resetForm();
+            };
+        } else {
+            this.setState({
+                formSubmitted: true,
+                nameHasError: !validName,
+                emailHasError: !validEmail
+            });
+        }
     }
 
     isEmailValid(email) {
