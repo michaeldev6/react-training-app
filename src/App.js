@@ -3,8 +3,7 @@ import './App.css';
 import {Header} from "./components/core/Header";
 import {Notification, notificationStyles} from "./components/core/Notification";
 import {TimeDisplay} from "./components/common/TimeDisplay";
-import {UserList} from "./components/UserList";
-import { ListErrorBoundary } from './components/common/ListErrorBoundary';
+import { UsersController } from './components/users/UsersController';
 
 // Just sample component to display how it can be passed in through props
 function ExampleNotificationHeader() {
@@ -47,22 +46,7 @@ class App extends React.Component {
           { this.state.showTime && <TimeDisplay /> }
         </Header>
         <div className="content">
-          <button className="btn-primary" onClick={this.toggleNotification}>
-            {this.state.showNotification ? 'Hide Notification' : 'Show Notification'}
-          </button>
-          {
-            this.state.showNotification &&
-            <Notification
-              header={<ExampleNotificationHeader />}
-              notificationStyle={notificationStyles.info}
-            >
-              <p>Notification Custom Content</p>
-              <p>More Custom Content</p>
-            </Notification>
-          }
-          <ListErrorBoundary>
-            <UserList />
-          </ListErrorBoundary>
+          <UsersController />
         </div>
       </>
     );

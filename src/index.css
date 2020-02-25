@@ -118,3 +118,56 @@ button {
   font-size: 0.75rem;
   font-style: italic;
 }
+
+
+form.add-user {
+  background-color: rgba(0,0,0,0.15);
+  border: 0.0625rem solid var(--grey);
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+}
+
+form.add-user .field-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+
+form.add-user .field-group label {
+  min-width: 7rem;
+  margin-right: 0.5rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+}
+
+form.add-user .field-group input[type="text"] {
+  border: 0;
+  border-radius: var(--border-radius);
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 16rem;
+}
+
+form.add-user .actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+form.add-user .actions button {
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+form.add-user .actions button[type="reset"] {
+  background-color: var(--black);
+}
+
+form.add-user .actions button[type="submit"] {
+  background-color: var(--primary-color);
+}
